@@ -1,0 +1,8 @@
+node_modules/*
+dist/*
+.nvm/*
+.vscode/
+.packageRevision
+.cache/*
+.idea/
+.fnm/*

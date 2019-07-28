@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+#run node
+
+export PROFILES="local"
+export LOG_LEVEL="trace"
+
+exec ./nodew ./app/index.ts | ./node_modules/.bin/pino-pretty

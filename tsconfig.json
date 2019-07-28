@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "watch": false,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "removeComments": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "lib": ["dom", "es2015"],
+    "typeRoots": ["./custom_types/", "./node_modules/@types"],
+    "outDir": "dist",
+    "plugins": [{ "transform": "ts-optchain/transform" }]
+  },
+  "exclude": ["node_modules", "dist"]
+}

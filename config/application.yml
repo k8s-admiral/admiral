@@ -1,0 +1,8 @@
+server:
+  http:
+    port: 8080
+    shutdown:
+      wait: 20
+git:
+  path: ../config-source-example
+  #TODO: implement git urls https and ssh plus various auth methods

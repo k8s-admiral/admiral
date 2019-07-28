@@ -1,0 +1,29 @@
+# Official docker image.
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+build-develop:
+  stage: build
+  script:
+    - export CLEANED_BRANCH=$(echo $CI_COMMIT_REF_NAME | sed s/[^a-zA-Z0-9-]/_/)
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${CI_JOB_ID}_${CLEANED_BRANCH}" .
+    - docker push "$CI_REGISTRY_IMAGE:${CI_JOB_ID}_${CLEANED_BRANCH}"
+  except:
+    - master
+    - tags
+
+build-release:
+  stage: build
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:${CI_COMMIT_TAG}" .
+    - docker push "$CI_REGISTRY_IMAGE:${CI_COMMIT_TAG}"
+  only:
+    - tags

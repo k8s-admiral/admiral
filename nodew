@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+source ./installPrereq.sh
+#run node
+
+node ./node_modules/.bin/ts-node --compiler ttypescript "$@"
